@@ -10,16 +10,20 @@
 <div class="d-flex flex-column align-items-center justify-content-center vh-100">
     <div class="container-fluid bg-body-tertiary border rounded p-3" style="max-width: 300px">
         <h3>Please log in</h3>
-        <form action="#" th:action="@{doLogin}" th:object="${loginModel}" method="post">
+        <div class="form-text" th:if="${param.logout}">
+            You have been logged out
+        </div>
+        <div class="form-text text-danger" th:if="${param.error}">
+            Invalid username or password
+        </div>
+        <form action="#" th:action="@{/login}" method="post">
             <div class="mb-3">
                 <label for="usernameInput" class="form-label">Username</label>
-                <input type="text" class="form-control" th:field="*{username}" id="usernameInput">
-                <div class="form-text text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username error</div>
+                <input type="text" class="form-control" id="usernameInput" name="username">
             </div>
             <div class="mb-3">
                 <label for="passwordInput" class="form-label">Password</label>
-                <input type="password" class="form-control" th:field="*{password}" id="passwordInput">
-                <div class="form-text text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
+                <input type="password" class="form-control" id="passwordInput" name="password">
             </div>
             <input type="submit" value="Submit" class="btn btn-primary">
         </form>

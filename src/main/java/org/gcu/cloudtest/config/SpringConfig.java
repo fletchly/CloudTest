@@ -1,4 +1,4 @@
-package org.gcu.cloudtest;
+package org.gcu.cloudtest.config;
 
 import org.gcu.cloudtest.business.OrdersBusinessService;
 import org.gcu.cloudtest.business.OrdersBusinessServiceInterface;
@@ -11,7 +11,7 @@ import org.springframework.web.context.annotation.SessionScope;
 @Configuration
 public class SpringConfig
 {
-    @Bean(name = "ordersBusinessService", initMethod = "init", destroyMethod = "destroy")
+    @Bean(name = "ordersBusinessService")
     @RequestScope
     public OrdersBusinessServiceInterface getOrdersBusinessService()
     {

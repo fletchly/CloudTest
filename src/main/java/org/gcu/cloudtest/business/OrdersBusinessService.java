@@ -15,12 +15,6 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface
     OrderDataService orderDataService;
 
     @Override
-    public void test()
-    {
-        System.out.println("Test -> OrdersBusinessService.test()");
-    }
-
-    @Override
     public List<OrderModel> getOrders()
     {
         List<OrderEntity> ordersEntity = orderDataService.findAll();
@@ -35,17 +29,5 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface
                     orderEntity.getQuantity()));
         }
         return ordersDomain;
-    }
-
-    @Override
-    public void init()
-    {
-        System.out.println("init -> OrdersBusinessService.init()");
-    }
-
-    @Override
-    public void destroy()
-    {
-        System.out.println("destroy -> OrdersBusinessService.destroy()");
     }
 }
