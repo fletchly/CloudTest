@@ -1,8 +1,6 @@
 package org.gcu.cloudtest.config;
 
-import org.gcu.cloudtest.business.OrdersBusinessService;
-import org.gcu.cloudtest.business.OrdersBusinessServiceInterface;
-import org.gcu.cloudtest.business.SecurityBusinessService;
+import org.gcu.cloudtest.business.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,16 +16,14 @@ import javax.sql.DataSource;
 public class SpringConfig
 {
     @Bean(name = "ordersBusinessService")
-    @RequestScope
     public OrdersBusinessServiceInterface getOrdersBusinessService()
     {
         return new OrdersBusinessService();
     }
 
-    @Bean(name = "securityBusinessService")
-    @SessionScope
-    public SecurityBusinessService getSecurityBusinessService()
+    @Bean(name = "newUserService")
+    public NewUserServiceInterface getNewUsersService()
     {
-        return new SecurityBusinessService();
+        return new NewUserService();
     }
 }

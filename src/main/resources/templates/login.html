@@ -25,7 +25,15 @@
                 <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password">
                 <label for="passwordInput">Password</label>
             </div>
-            <input type="submit" value="Log In" class="btn btn-primary">
+            <div class="d-flex">
+                <div>
+                    <input type="submit" value="Log In" class="btn btn-primary">
+                </div>
+                <div class="ms-auto">
+                    <a href="#" th:href="@{/newUser}" class="btn btn-outline-primary">Register</a>
+                </div>
+            </div>
+
         </form>
     </div>
 </div>
