@@ -1,39 +1,40 @@
 package org.gcu.cloudtest.data.entity;
 
-import org.springframework.data.annotation.Id;;
-import org.springframework.data.annotation.Version;
-import org.springframework.data.domain.Persistable;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-import java.io.Serializable;
-
-
-@Table("users")
-public class UserEntity implements Persistable<String>
+@Entity
+@Table(name = "users")
+public class UserEntity
 {
     @Id
-    @Column("username")
     private String username;
 
-    @Column("password")
+    @Column(name = "password")
     private String password;
 
-    @Column("enabled")
+    @Column(name = "enabled")
     private int enabled;
 
-    @Column("first_name")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column("last_name")
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column("email")
+    @Column(name = "email")
     private String email;
 
     public UserEntity()
     {
-        super();
+        this.username = null;
+        this.password = null;
+        this.enabled = 0;
+        this.firstName = null;
+        this.lastName = null;
+        this.email = null;
     }
 
     public UserEntity(String username, String password, int enabled, String firstName, String lastName, String email)
@@ -66,16 +67,6 @@ public class UserEntity implements Persistable<String>
         this.password = password;
     }
 
-    public int getEnabled()
-    {
-        return enabled;
-    }
-
-    public void setEnabled(int enabled)
-    {
-        this.enabled = enabled;
-    }
-
     public String getFirstName()
     {
         return firstName;
@@ -104,17 +95,5 @@ public class UserEntity implements Persistable<String>
     public void setEmail(String email)
     {
         this.email = email;
-    }
-
-    @Override
-    public String getId()
-    {
-        return username;
-    }
-
-    @Override
-    public boolean isNew()
-    {
-        return true;
     }
 }

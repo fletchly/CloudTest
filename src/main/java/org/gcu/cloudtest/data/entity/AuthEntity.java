@@ -1,19 +1,27 @@
 package org.gcu.cloudtest.data.entity;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.domain.Persistable;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
 
-@Table("authorities")
-public class AuthEntity implements Persistable<String>
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "authorities")
+public class AuthEntity
 {
     @Id
-    @Column("username")
+    @Column(name = "username")
     private String username;
 
-    @Column("authority")
+    @Column(name = "authority")
     private String authority;
+
+    public AuthEntity()
+    {
+        this.username = null;
+        this.authority = null;
+    }
 
     public AuthEntity(String username, String authority)
     {
@@ -39,17 +47,5 @@ public class AuthEntity implements Persistable<String>
     public void setAuthority(String authority)
     {
         this.authority = authority;
-    }
-
-    @Override
-    public String getId()
-    {
-        return this.username;
-    }
-
-    @Override
-    public boolean isNew()
-    {
-        return true;
     }
 }

@@ -1,31 +1,34 @@
 package org.gcu.cloudtest.data.entity;
 
-import org.springframework.context.annotation.Primary;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.persistence.*;
 
-@Table("ORDERS")
+@Entity
+@Table(name = "orders")
 public class OrderEntity
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column("ORDER_NO")
+    @Column(name = "order_no")
     private String orderNo;
 
-    @Column("PRODUCT_NAME")
+    @Column(name = "product_name")
     private String productName;
 
-    @Column("PRICE")
+    @Column(name = "price")
     private float price;
 
-    @Column("QUANTITY")
+    @Column(name="quantity")
     private int quantity;
 
     public OrderEntity()
     {
-        super();
+        this.id = null;
+        this.orderNo = null;
+        this.productName = null;
+        this.price = 0;
+        this.quantity = 0;
     }
 
     public OrderEntity(Long id, String orderNo, String productName, float price, int quantity)
