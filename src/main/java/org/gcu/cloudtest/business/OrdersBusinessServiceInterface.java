@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface OrdersBusinessServiceInterface
 {
-    public List<OrderModel> getOrders();
+    List<OrderModel> getOrders();
 }

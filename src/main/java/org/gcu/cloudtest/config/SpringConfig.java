@@ -1,16 +1,14 @@
 package org.gcu.cloudtest.config;
 
-import org.gcu.cloudtest.business.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.gcu.cloudtest.business.NewUserService;
+import org.gcu.cloudtest.business.NewUserServiceInterface;
+import org.gcu.cloudtest.business.OrdersBusinessService;
+import org.gcu.cloudtest.business.OrdersBusinessServiceInterface;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.context.annotation.SessionScope;
-
-import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig
@@ -25,5 +23,12 @@ public class SpringConfig
     public NewUserServiceInterface getNewUsersService()
     {
         return new NewUserService();
+    }
+
+    @Bean
+    @SessionScope
+    public Authentication getAuth()
+    {
+        return SecurityContextHolder.getContext().getAuthentication();
     }
 }

@@ -36,10 +36,9 @@ public class UserDataService implements DataAccessInterface<UserEntity>
         try
         {
             usersRepository.save(userEntity);
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
-            e.printStackTrace();
+            System.out.println("There was an error: " + e.getMessage());
             return false;
         }
         return true;

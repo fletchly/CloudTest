@@ -19,7 +19,7 @@ public class OrderEntity
     @Column(name = "price")
     private float price;
 
-    @Column(name="quantity")
+    @Column(name = "quantity")
     private int quantity;
 
     public OrderEntity()
